@@ -1,0 +1,9 @@
+<mvc:View
+	controllerName="sap.shop.controller.Welcome"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true">
+	<Page>
+		<Text text="welcome" />
+	</Page>
+</mvc:View>
