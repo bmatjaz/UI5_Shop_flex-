@@ -3,7 +3,16 @@
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
 	displayBlock="true">
-	<Page>
-		<Text text="menu" />
+	<Page
+		title="{i18n>menuViewTitle}">
+        <List
+			items="{/Categories}">
+			<items>
+				<ObjectListItem
+					title="{CategoryName}"
+					type="Active"
+					press="onListItemPress" />
+			</items>
+		</List>
 	</Page>
 </mvc:View>

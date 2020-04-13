@@ -1,13 +1,22 @@
 {
 	"_version": "1.12.0",
 	"sap.app": {
-		"id": "sap.shop.",
+		"id": "sap.shop",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
 		"title": "appTitle",
 		"description": "appDescription",
 		"applicationVersion": {
 			"version": "1.0.0"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "http://localhost:8081/https://services.odata.org/V2/Northwind/Northwind.svc/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			}
 		}
 	},
 	"sap.ui": {
@@ -23,7 +32,7 @@
 			"viewName": "sap.shop.view.App",
 			"type": "XML",
 			"async": true,
-			"id": "app"
+			"id": "layout"
 		},
 		"dependencies": {
 			"minUI5Version": "1.60",
@@ -37,6 +46,10 @@
 				"settings": {
 					"bundleName": "sap.shop.i18n.i18n"
 				}
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"dataSource": "mainService"
 			}
 		},
 		"resources": {
@@ -48,31 +61,43 @@
 		},
 		"routing": {
 			"config": {
-				"routerClass": "sap.m.routing.Router",
-				"viewPath": "sap.shop.view",
+				"async": true,
+				"routerClass": "sap.f.routing.Router",
 				"viewType": "XML",
+				"viewPath": "sap.shop.view",
 				"controlId": "layout",
 				"transition": "slide",
-				"async": true
+				"bypassed": {
+					"target": "notFound"
+				},
+				"homeRoute": "home"
 			},
 			"routes": [
 				{
 					"name": "home",
 					"pattern":"",
-					"target": ["menu", "welcome"]
+					"target": ["menu", "products"],
+					"layout": "TwoColumnsMidExpanded"
+				},
+				{
+					"name": "cart",
+					"pattern":"cart",
+					"target": ["menu", "products", "cart"]
 				}
 			],
 			"targets":{
 				"menu": {
-					"viewName": "Menu",
-					"viewLevel": 1,
-					"controlAggregation": "beginColumnPages"
-				},
-				"welcome": {
-					"viewName": "Welcome",
-					"viewLevel": 1,
+					"controlAggregation": "beginColumnPages",
+					"viewName": "Menu"
+				}, 
+				"products": {
+					"viewName": "Products",
 					"controlAggregation": "midColumnPages"
-				}				
+				},
+				"cart": {
+					"viewName": "Cart",
+					"controlAggregation": "endColumnPages"
+				}
 			}
 		}
 	}

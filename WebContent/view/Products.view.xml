@@ -1,0 +1,11 @@
+<mvc:View
+	controllerName="sap.shop.controller.Products"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true">
+	<Page>
+		<Text text="{i18n>productsViewTitle}" />
+		<ToggleButton pressed="{= ${appView>/layout}.startsWith('ThreeColumns') }"
+ text="cart" press=".openCart" />
+	</Page>
+</mvc:View>

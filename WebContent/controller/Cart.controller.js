@@ -3,7 +3,7 @@ sap.ui.define([
 ], function (Controller) {
 	"use strict";
 
-	return Controller.extend("sap.shop.controller.Welcome", {
+	return Controller.extend("sap.shop.controller.Cart", {
 
 	});
 
