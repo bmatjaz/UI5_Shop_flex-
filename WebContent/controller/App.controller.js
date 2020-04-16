@@ -1,24 +1,16 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller",
-	"sap/ui/model/json/JSONModel"
-], function (Controller, JSONModel) {
+	"sap/ui/model/json/JSONModel",
+	"sap/ui/core/mvc/Controller"
+], function (JSONModel, Controller) {
 	"use strict";
 
-	return Controller.extend("sap.shop.controller.App", {
-		onInit : function () {
-			var oViewModel = new JSONModel({
-				busy : true,
-				delay : 0,
-				layout : "TwoColumnsMidExpanded",
-				smallScreenMode : true
-			});
-			this.setModel(oViewModel, "appView");
+	return Controller.extend("sap.ui.flex.shop.controller.App", {
+		onInit: function () {
+		
+		},
 
-			
-		},
-		setModel: function (oModel, sName) {
-			return this.getView().setModel(oModel, sName);
-		},
+
+
+	
 	});
-
 });

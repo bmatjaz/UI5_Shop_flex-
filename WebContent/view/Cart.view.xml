@@ -1,9 +1,67 @@
 <mvc:View
-	controllerName="sap.shop.controller.Menu"
-	xmlns="sap.m"
-	xmlns:mvc="sap.ui.core.mvc"
-	displayBlock="true">
+	controllerName="sap.ui.flex.shop.controller.Cart"
+ xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
 	<Page
-		title="{i18n>shoppingCartTitle}">
+		id="page"
+		title="{i18n>productsInCart}"
+		backgroundDesign="Solid"
+		showNavButton="{appView>/smallScreenMode}"
+		navButtonPress=".onBack"
+		showFooter="true">
+		<footer>
+			<Toolbar>
+				<Text
+					id="totalPriceText"
+					text="Total: {
+						path: '/totalPriceInShoppingCart',
+						formatter: '.formatter.price'
+						} EUR"/>
+				<ToolbarSpacer/>
+				<Button
+					id="proceedButton"
+					text="{i18n>proceedToChechout}"
+					type="Accept"
+					press=".onProceedButtonPress"/>
+			</Toolbar>
+		</footer>
+		<Table id="productTable" items="{cartProducts>/cartEntries}">
+			<columns>
+				<Column>
+					<Label text="{i18n>productName}" />
+				</Column>
+				<Column>
+					<Label text="{i18n>categoryId}" />
+				</Column>
+				<Column>
+					<Label text="{i18n>productId}" />
+				</Column>
+				<Column>
+					<Label text="{i18n>quantityInCart}"/>
+				</Column>
+				<Column>
+					<Label />
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text 
+						text="{cartProducts>Quantity} x 
+							{
+								path : 'cartProducts>UnitPrice',
+								formatter : '.formatter.price'
+							} EUR 
+							{cartProducts>ProductName}" />
+						<Text text="{cartProducts>CategoryID}" />
+						<Text text="{cartProducts>ProductID}" />
+						<StepInput
+							value="{cartProducts>Quantity}"
+							change=".totalPrice"/>
+						<Button icon="sap-icon://delete" text="{i18n>removeFromCart}" press=".delete"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
 	</Page>
 </mvc:View>

@@ -1,45 +1,40 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-	"sap/ui/core/UIComponent"
-], function (Controller, UIComponent) {
+	"../model/cart"
+], function (Controller, cart, formatter, JSONModel) {
 	"use strict";
-
-	return Controller.extend("sap.shop.controller.Products", {
-
-		openCart: function (oEvent) {
-			var bPressed = oEvent.getParameter("pressed");
-			console.log(bPressed);
-			this._setLayout(bPressed ? "Three" : "Two");
-			this.getRouter().navTo(bPressed ? "cart" : "home");
+	formatter: formatter
+	return Controller.extend("sap.ui.flex.shop.controller.Products", {
+		onInit: function () {
+			var oOwnerComponent = this.getOwnerComponent();
+			this.oRouter = oOwnerComponent.getRouter();
+			this.oRouter.getRoute("products").attachPatternMatched(this._onProductMatched, this);
+			
 		},
-		/**
-		 * Sets the flexible column layout to one, two, or three columns for the different scenarios across the app
-		 * @param {string} sColumns the target amount of columns
-		 * @private
-		 */
-		_setLayout: function (sColumns) {
-			if (sColumns) {
-				this.getModel("appView").setProperty("/layout", sColumns + "Column" + (sColumns === "One" ? "" : "sMidExpanded"));
+		_onProductMatched: function (oEvent) {
+			this.categoryId = oEvent.getParameter("arguments").categoryID;
+			var _oTable = this.getView().byId("productsTable");
+			var oTemplate = _oTable.getBindingInfo("items").template;
+
+			var oBindingInfo = {
+				path: "/Categories(" + this.categoryId + ")/Products",
+				template: oTemplate,
+			};
+			_oTable.bindAggregation("items", oBindingInfo);
+		},
+		openCart: function(oEvent) {
+			var isPressed = oEvent.getParameter("pressed");
+			if(isPressed) {
+				this.oRouter.navTo("cart", {categoryID: this.categoryId});
+			} else {
+				this.oRouter.navTo("products", {categoryID: this.categoryId});
 			}
 		},
-		/**
-		 * Convenience method for getting the view model by name.
-		 * @public
-		 * @param {string} [sName] the model name
-		 * @returns {sap.ui.model.Model} the model instance
-		 */
-		getModel: function (sName) {
-			return this.getView().getModel(sName);
-		},
-		/**
-		 * Convenience method for accessing the router.
-		 * @public
-		 * @returns {sap.ui.core.routing.Router} the router for this component
-		 */
-		getRouter: function () {
-			return UIComponent.getRouterFor(this);
-		},
-	
+		addToCart: function(oEvent) {
+			var oResourceBundle = this.getView().getModel("i18n").getResourceBundle();
+			var oProduct = oEvent.getSource().getBindingContext().getObject();
+			var oCartModel = this.getView().getModel("cartProducts");			
+			cart.addToCart(oResourceBundle, oProduct, oCartModel);
+		}
 	});
-
 });
