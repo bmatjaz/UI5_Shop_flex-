@@ -1,0 +1,13 @@
+sap.ui.define([
+	"sap/ui/core/mvc/Controller"
+], function (Controller) {
+	"use strict";
+
+	return Controller.extend("sap.ui.flex.shop.controller.OrderConfirmation", {
+		onInit: function () {
+		},
+		onListItemPress: function (oEvent) {
+			
+		}
+	});
+});

@@ -1,10 +1,13 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-	"../model/cart"
-], function (Controller, cart, formatter, JSONModel) {
+	"../model/cart",
+	"../model/formatter"
+], function (Controller, cart, formatter) {
 	"use strict";
-	formatter: formatter
+	
 	return Controller.extend("sap.ui.flex.shop.controller.Products", {
+		formatter: formatter,
+		
 		onInit: function () {
 			var oOwnerComponent = this.getOwnerComponent();
 			this.oRouter = oOwnerComponent.getRouter();

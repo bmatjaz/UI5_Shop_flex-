@@ -94,6 +94,14 @@
 						"checkout"
 					],
 					"layout": "OneColumn"
+				},
+				{
+					"pattern": "orderConfirmation",
+					"name": "orderConfirmation",
+					"target": [
+						"master", "orderConfirmation"
+					],
+					"layout": "TwoColumnsMidExpanded"
 				}
 
 			],
@@ -113,6 +121,10 @@
 				"checkout": {
 					"viewName": "Checkout",
 					"controlAggregation": "beginColumnPages"
+				},
+				"orderConfirmation": {
+					"viewName": "OrderConfirmation",
+					"controlAggregation": "midColumnPages"
 				}
 			}
 		}

@@ -33,7 +33,10 @@
 								items="{/Products}">
 								<m:columns>
 									<m:Column>
-										<m:Text text="Product" />
+										<m:Text text="{i18n>productName}" />
+									</m:Column>
+									<m:Column>
+										<m:Text text="{i18n>productPrice}" />
 									</m:Column>
 									<m:Column>
 										
@@ -45,10 +48,16 @@
 											<m:ObjectIdentifier text="{ProductName}"/>
 										</m:cells>
 										<m:cells>
-										<m:Button
-											text="{i18n>shoppingCart}"
-											icon="sap-icon://cart-3" 
-											press=".addToCart" />
+											<m:ObjectIdentifier text="{
+												path: 'UnitPrice',
+												formatter: '.formatter.price'
+												} EUR"/>
+										</m:cells>
+										<m:cells>
+											<m:Button
+												text="{i18n>shoppingCart}"
+												icon="sap-icon://cart-3" 
+												press=".addToCart" />
 										</m:cells>
 									</m:ColumnListItem>
 								</m:items>
