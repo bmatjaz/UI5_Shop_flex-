@@ -3,39 +3,28 @@
 	xmlns="sap.m"
 	xmlns:f="sap.f"
 	xmlns:mvc="sap.ui.core.mvc">
-	<f:DynamicPage id="dynamicPageId" toggleHeaderOnTitleClick="false">
-		<!-- DynamicPage Title -->
-		<f:title>
-			<f:DynamicPageTitle>
-				<f:heading>
-					<Title text="{i18n>categorySelection}"/>
-				</f:heading>
-			</f:DynamicPageTitle>
-		</f:title>
-
-		<!-- DynamicPage Content -->
-		<f:content>
-			<VBox fitContainer="true">
-				<Table
-					id="productsTable"
-					inset="false"
-					items="{/Categories}"
-					class="sapFDynamicPageAlignContent"
-					width="auto">
-					<columns>
-						<Column width="12em">
-							<Text text="{i18n>categories}"/>
-						</Column>
-					</columns>
-					<items>
-						<ColumnListItem type="Navigation" press=".onListItemPress">
-							<cells>
-								<ObjectIdentifier title="{CategoryName}" />
-							</cells>
-						</ColumnListItem>
-					</items>
-				</Table>
-			</VBox>
-		</f:content>
-	</f:DynamicPage>
+	<Page
+		id="page"
+		title="{i18n>categorySelection}"
+		backgroundDesign="Solid">
+		<Table
+			id="productsTable"
+			inset="false"
+			items="{/Categories}"
+			class="sapFDynamicPageAlignContent"
+			width="auto">
+			<columns>
+				<Column width="12em">
+					<Text text="{i18n>categories}"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem type="Navigation" press=".onListItemPress">
+					<cells>
+						<ObjectIdentifier title="{CategoryName}" />
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</Page>
 </mvc:View>

@@ -22,9 +22,14 @@ sap.ui.define([
 			this.getView().setModel(oModel);
 			
 		},
+		//whenever cart opens call function totalPrice to get sum of all product prices in cart
 		_onObjectMatched: function() {
 			this.totalPrice();
 		},
+
+		/*
+			deleting selected item from shopping cart and refreshing price in cart
+		*/
 		delete: function(oEvent) {
 			var oBindingContext = oEvent.getSource().getBindingContext(sCartModelName);
 
@@ -52,6 +57,7 @@ sap.ui.define([
 				}.bind(this)
 			});
 		},
+		//function to calculate price of all items in cart
 		totalPrice: function() {
 			var oCartModel = this.getOwnerComponent().getModel("cartProducts").getData().cartEntries;
 			var totalPrice = 0;

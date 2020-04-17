@@ -14,6 +14,8 @@ sap.ui.define([
 			this.oRouter.getRoute("products").attachPatternMatched(this._onProductMatched, this);
 			
 		},
+
+		//when view is opened get all products based on category
 		_onProductMatched: function (oEvent) {
 			this.categoryId = oEvent.getParameter("arguments").categoryID;
 			var _oTable = this.getView().byId("productsTable");
@@ -25,6 +27,8 @@ sap.ui.define([
 			};
 			_oTable.bindAggregation("items", oBindingInfo);
 		},
+
+		//opens and closes cart view based on the true/false from togglebutton
 		openCart: function(oEvent) {
 			var isPressed = oEvent.getParameter("pressed");
 			if(isPressed) {
@@ -33,6 +37,7 @@ sap.ui.define([
 				this.oRouter.navTo("products", {categoryID: this.categoryId});
 			}
 		},
+		//selected product is sent to cart
 		addToCart: function(oEvent) {
 			var oResourceBundle = this.getView().getModel("i18n").getResourceBundle();
 			var oProduct = oEvent.getSource().getBindingContext().getObject();

@@ -11,6 +11,8 @@ sap.ui.define([
 
 			this.oRouter = this.getOwnerComponent().getRouter();
 		},
+
+		//pressing item opens new view products and send categoryid to it
 		onListItemPress: function (oEvent) {
 			var categoryId = oEvent.getSource().getBindingContext().getProperty("CategoryID");
 			this.oRouter.navTo("products", {categoryID: categoryId});

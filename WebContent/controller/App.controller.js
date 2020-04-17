@@ -8,9 +8,5 @@ sap.ui.define([
 		onInit: function () {
 		
 		},
-
-
-
-	
 	});
 });

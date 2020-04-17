@@ -5,9 +5,6 @@ sap.ui.define([
 
 	return Controller.extend("sap.ui.flex.shop.controller.OrderConfirmation", {
 		onInit: function () {
-		},
-		onListItemPress: function (oEvent) {
-			
 		}
 	});
 });

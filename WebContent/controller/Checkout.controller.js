@@ -12,6 +12,7 @@ sap.ui.define([
 	return Controller.extend("sap.ui.flex.shop.controller.Checkout", {
 		formatter: formatter,
 		
+		//creating model for data needed for checkout
         onInit : function () {
 			this._oHistory = {
 				prevPaymentSelect: null,
@@ -56,7 +57,7 @@ sap.ui.define([
 			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			oRouter.navTo("master");
 
-			// resets Wizard
+			// resets Wizard and sets it to first step after returning to previous views
 			var oWizard = this.getView().byId("shoppingCartWizard");
 			this._navToWizardStep(this.byId("paymentTypeStep"));
 			oWizard.discardProgress(oWizard.getSteps()[0]);

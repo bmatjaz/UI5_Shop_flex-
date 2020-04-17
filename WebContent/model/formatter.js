@@ -1,26 +1,9 @@
 sap.ui.define([
-	"sap/ui/core/format/NumberFormat",
-	"sap/base/i18n/ResourceBundle"
-], function (NumberFormat, ResourceBundle) {
+	"sap/ui/core/format/NumberFormat"
+], function (NumberFormat) {
 	"use strict";
 
 	var formatter = {
-
-		/**
-		 * Sums up the price for all products in the cart
-		 * @param {object} oCartEntries current cart entries
-		 * @return {string} string with the total value
-		 */
-		totalPrice: function (oCartEntries) {
-			var oBundle = this.getView().getModel("i18n").getResourceBundle(),
-				fTotalPrice = 0;
-
-			Object.keys(oCartEntries).forEach(function (ProductID) {
-				var oProduct = oCartEntries[ProductID];
-				fTotalPrice += parseFloat(oProduct.UnitPrice) * oProduct.Quantity;
-			});
-			return oBundle.getText("cartTotalPrice", formatter.price(fTotalPrice));
-		},
 		/**
 		 * Formats the price
 		 * @param {string} sValue model price value
