@@ -1,0 +1,10 @@
+<mvc:View
+	controllerName="sap.ui.flex.shop.controller.ProductDetails"
+	xmlns:f="sap.f"
+    xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+    <Page>
+		
+	</Page>
+
+</mvc:View>

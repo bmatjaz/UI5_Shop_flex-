@@ -43,7 +43,9 @@
 									</m:Column>
 								</m:columns>
 								<m:items>
-									<m:ColumnListItem type="Navigation">
+									<m:ColumnListItem 
+										type="Navigation"
+                						press=".getProductDetails">
 										<m:cells>
 											<m:ObjectIdentifier text="{ProductName}"/>
 										</m:cells>

@@ -1,0 +1,23 @@
+<mvc:View
+	controllerName="sap.ui.flex.shop.controller.Welcome"
+	xmlns="sap.m"
+	xmlns:f="sap.f"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page
+		title="Welcome to the shop">
+		 <headerContent>
+            <Button icon="sap-icon://globe" press=".language" />
+        </headerContent>
+        <Carousel 
+			class="sapUiContentPadding" 
+			loop="true"
+			showPageIndicator="false"
+			height="30%">
+		<pages>
+			<Image src="https://cdn.pixabay.com/photo/2016/11/23/15/14/shelf-1853439_960_720.jpg" width="100%" height="100%"/>
+			<Image src="https://cdn.pixabay.com/photo/2016/03/23/19/38/shopping-cart-1275480_960_720.jpg" width="100%" height="100%"/>
+			<Image src="https://cdn.pixabay.com/photo/2016/11/22/19/24/archive-1850170_960_720.jpg" width="100%" height="100%"/>
+		</pages>
+	</Carousel>
+	</Page>
+</mvc:View>

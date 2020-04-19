@@ -14,7 +14,6 @@ sap.ui.define([
 			this.oRouter.getRoute("products").attachPatternMatched(this._onProductMatched, this);
 			
 		},
-
 		//when view is opened get all products based on category
 		_onProductMatched: function (oEvent) {
 			this.categoryId = oEvent.getParameter("arguments").categoryID;
@@ -27,7 +26,12 @@ sap.ui.define([
 			};
 			_oTable.bindAggregation("items", oBindingInfo);
 		},
-
+		getProductDetails: function(oEvent) {
+			var sProductId = oEvent.getSource().getBindingContext().getProperty("ProductID");
+			this.oRouter.navTo("productDetails",
+				{categoryID:this.categoryId, productID: sProductId });
+			console.log("laklala")
+		},
 		//opens and closes cart view based on the true/false from togglebutton
 		openCart: function(oEvent) {
 			var isPressed = oEvent.getParameter("pressed");

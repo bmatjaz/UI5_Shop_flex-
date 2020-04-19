@@ -1,30 +1,48 @@
 <mvc:View
 	controllerName="sap.ui.flex.shop.controller.Master"
-	xmlns="sap.m"
-	xmlns:f="sap.f"
-	xmlns:mvc="sap.ui.core.mvc">
-	<Page
-		id="page"
-		title="{i18n>categorySelection}"
-		backgroundDesign="Solid">
-		<Table
-			id="productsTable"
-			inset="false"
-			items="{/Categories}"
-			class="sapFDynamicPageAlignContent"
-			width="auto">
-			<columns>
-				<Column width="12em">
-					<Text text="{i18n>categories}"/>
-				</Column>
-			</columns>
-			<items>
-				<ColumnListItem type="Navigation" press=".onListItemPress">
-					<cells>
-						<ObjectIdentifier title="{CategoryName}" />
-					</cells>
-				</ColumnListItem>
-			</items>
-		</Table>
-	</Page>
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns="sap.m"
+		xmlns:core="sap.ui.core"
+		xmlns:f="sap.f"
+		xmlns:layout="sap.ui.layout"
+		height="100%">
+	<f:DynamicPage 
+		id="dynamicPageId"
+		showFooter="true">
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title text="{i18n>categorySelection}"/>
+					</f:heading>
+				</f:DynamicPageTitle>
+			</f:title>
+			<f:content>
+				<List
+					id="idList"
+					items="{/Categories}"
+					selectionChange=".onSelectionChange"
+					growing="true"
+					growingThreshold="50">
+					<StandardListItem
+						type="Active"
+						press="onListItemPress"
+						title="{CategoryName}"
+						description="{CategoryID}"/>
+				</List>
+			</f:content>
+			
+			<!-- DynamicPage Footer -->
+			<f:footer>
+				<OverflowToolbar>
+					<Label text="Language:" labelFor="languageBox"/>
+					<ComboBox 
+						id="languageBox"
+						change="changeLanguage">
+						<core:Item key="de" text="DE"/>
+						<core:Item key="default" text="Local"/>
+         		   </ComboBox>
+				</OverflowToolbar>
+			</f:footer>
+		</f:DynamicPage>
 </mvc:View>

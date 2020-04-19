@@ -3,9 +3,8 @@ sap.ui.define([
 ], function (Controller) {
 	"use strict";
 
-	return Controller.extend("sap.ui.flex.shop.controller.App", {
+	return Controller.extend("sap.ui.flex.shop.controller.ProductDetail", {
 		onInit: function () {
-		
-		},
+		}
 	});
 });

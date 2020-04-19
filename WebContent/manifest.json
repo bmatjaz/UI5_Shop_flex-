@@ -64,9 +64,10 @@
 					"pattern": "",
 					"name": "master",
 					"target": [
+						"welcome",
 						"master"
 					],
-					"layout": "OneColumn"
+					"layout": "TwoColumnsMidExpanded"
 				},
 				{
 					"pattern": "products/{categoryID}",
@@ -102,6 +103,14 @@
 						"master", "orderConfirmation"
 					],
 					"layout": "TwoColumnsMidExpanded"
+				},
+				{
+					"pattern": "products/{categoryID}/details/{productID}",
+					"name": "productDetails",
+					"target": [
+						"master", "products", "productDetails"
+					],
+					"layout": "ThreeColumnsEndExpanded"
 				}
 
 			],
@@ -125,6 +134,14 @@
 				"orderConfirmation": {
 					"viewName": "OrderConfirmation",
 					"controlAggregation": "midColumnPages"
+				},
+				"welcome": {
+					"viewName": "Welcome",
+					"controlAggregation": "midColumnPages"
+				},
+				"productDetails": {
+					"viewName": "ProductDetails",
+					"controlAggregation": "endColumnPages"
 				}
 			}
 		}
