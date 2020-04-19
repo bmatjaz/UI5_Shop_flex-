@@ -17,6 +17,7 @@
 			<ObjectPageDynamicHeaderTitle>
 				<actions>
 					<m:ToggleButton
+						id="cartButton"
 						text="{i18n>shoppingCart}"
 						icon="sap-icon://cart" 
 						press=".openCart" />

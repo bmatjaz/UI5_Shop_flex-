@@ -30,7 +30,6 @@ sap.ui.define([
 			var sProductId = oEvent.getSource().getBindingContext().getProperty("ProductID");
 			this.oRouter.navTo("productDetails",
 				{categoryID:this.categoryId, productID: sProductId });
-			console.log("laklala")
 		},
 		//opens and closes cart view based on the true/false from togglebutton
 		openCart: function(oEvent) {
