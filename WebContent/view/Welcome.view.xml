@@ -5,9 +5,6 @@
 	xmlns:mvc="sap.ui.core.mvc">
 	<Page
 		title="Welcome to the shop">
-		 <headerContent>
-            <Button icon="sap-icon://globe" press=".language" />
-        </headerContent>
         <Carousel 
 			class="sapUiContentPadding" 
 			loop="true"
