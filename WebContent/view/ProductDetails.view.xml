@@ -7,8 +7,10 @@
 	xmlns:f="sap.ui.layout.form">
     <Page title="{i18n>productDetailsPageTitle}"
 		showNavButton="true"
-		navButtonPress="onNavBack">
-		
+		navButtonPress=".backToProducts">
+		<headerContent>
+            <Button icon="sap-icon://close" press=".language" />
+        </headerContent>
 		<VBox class="sapUiSmallMargin">
 			<f:SimpleForm
 				editable="true"

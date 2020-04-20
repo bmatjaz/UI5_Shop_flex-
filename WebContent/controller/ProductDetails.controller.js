@@ -1,12 +1,11 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"../model/formatter",
-	"../model/cart",
-	"sap/ui/core/routing/History"
-], function (Controller, formatter, cart, History) {
+	"../model/cart"
+], function (Controller, formatter, cart) {
 	"use strict";
 
-	return Controller.extend("sap.ui.flex.shop.controller.ProductDetail", {
+	return Controller.extend("sap.ui.flex.shop.controller.ProductDetails", {
 		formatter: formatter,
 
 		onInit: function () {
@@ -23,16 +22,10 @@ sap.ui.define([
 			var oCartModel = this.getView().getModel("cartProducts");			
 			cart.addToCart(oResourceBundle, oProduct, oCartModel);
 		},
-		onNavBack: function () {
-			var oHistory = History.getInstance();
-			var sPreviousHash = oHistory.getPreviousHash();
-
-			if (sPreviousHash !== undefined) {
-				window.history.go(-1);
-			} else {
-				var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-				oRouter.navTo("products", true);
-			}
+		backToProducts: function (oEvent) {
+			var oRouter = this.getOwnerComponent().getRouter();
+			var sCategoryId = oEvent.getSource().getBindingContext().getProperty("CategoryID");
+			oRouter.navTo("products", {categoryID:sCategoryId});
 		}
 	});
 });

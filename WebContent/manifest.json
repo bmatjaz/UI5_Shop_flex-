@@ -64,8 +64,8 @@
 					"pattern": "",
 					"name": "master",
 					"target": [
-						"welcome",
-						"master"
+						"master",
+						"welcome"
 					],
 					"layout": "TwoColumnsMidExpanded"
 				},

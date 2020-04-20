@@ -26,10 +26,14 @@ sap.ui.define([
 			};
 			_oTable.bindAggregation("items", oBindingInfo);
 		},
+		//getting details and setting cart button to false if it is pressed before going to details
 		getProductDetails: function(oEvent) {
 			var sProductId = oEvent.getSource().getBindingContext().getProperty("ProductID");
 			this.oRouter.navTo("productDetails",
 				{categoryID:this.categoryId, productID: sProductId });
+
+			var button = this.getView().byId("cartButton");
+			button.setPressed()
 		},
 		//opens and closes cart view based on the true/false from togglebutton
 		openCart: function(oEvent) {
