@@ -43,24 +43,21 @@ sap.ui.define([
 			var button = this.getView().byId("cartButton");
 			button.setPressed()
 		},
-		//opens and closes cart view based on the true/false from togglebutton
+		//opens and closes cart view based on the true/false from togglebutton and/or
+		//if you got to cart from details view it closes on button press
 		openCart: function(oEvent) {
 			var isPressed = oEvent.getParameter("pressed");
 			var button = this.getView().byId("cartButton");
 
-			//check if cart is open on load (in case of page refresh)
-			if((window.location.href).slice(-5)=="/cart") {
-				button.setPressed(true);
-			}
-
 			if(this.categoryId == undefined)
 				this.categoryId="1";
 
-			if(isPressed) {
-				this.oRouter.navTo("cart", {categoryID: this.categoryId});
-			} else {
+			if(!isPressed || (window.location.href).slice(-5)=="/cart") {
 				this.oRouter.navTo("products", {categoryID: this.categoryId});
 				button.setPressed(false);
+				
+			} else {
+				this.oRouter.navTo("cart", {categoryID: this.categoryId});
 			}
 		},
 		//selected product is sent to cart
