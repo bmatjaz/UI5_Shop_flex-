@@ -72,6 +72,15 @@ sap.ui.define([
 		},
 		onProceedButtonPress: function() {
 			this._oRouter.navTo("checkout");
+		},
+		goToDetails: function(oEvent) {
+			var oBindingContext = oEvent.getSource().getBindingContext(sCartModelName);
+			var sEntryId = oBindingContext.getObject().ProductID;
+
+
+
+			this._oRouter.navTo("productDetails",
+				{categoryID:"1", productID: sEntryId });
 		}
 	});
 });

@@ -20,6 +20,8 @@ sap.ui.define([
 			UIComponent.prototype.init.apply(this, arguments);
 
 			this.getRouter().initialize();
+
+			sap.ui.getCore().getConfiguration().setLanguage("de");
 		}
 	});
 });

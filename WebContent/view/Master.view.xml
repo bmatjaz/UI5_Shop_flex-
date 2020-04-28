@@ -9,6 +9,24 @@
 	<f:DynamicPage 
 		id="dynamicPageId"
 		showFooter="true">
+			<f:header>
+				<f:DynamicPageHeader>
+					<layout:HorizontalLayout>
+						<layout:VerticalLayout class="sapUiMediumMarginEnd">
+							<Label text="Language:" labelFor="languageBox"/>
+						</layout:VerticalLayout>
+						<layout:VerticalLayout>
+							<ComboBox 
+								id="languageBox"
+								change="changeLanguage"
+								selectedKey="de">
+								<core:Item key="de" text="DE"/>
+								<core:Item key="en" text="EN"/>
+         		   			</ComboBox>
+						</layout:VerticalLayout>
+					</layout:HorizontalLayout>
+				</f:DynamicPageHeader>
+			</f:header>	
 			<!-- DynamicPage Title -->
 			<f:title>
 				<f:DynamicPageTitle>
@@ -31,18 +49,5 @@
 						description="{CategoryID}"/>
 				</List>
 			</f:content>
-			
-			<!-- DynamicPage Footer -->
-			<f:footer>
-				<OverflowToolbar>
-					<Label text="Language:" labelFor="languageBox"/>
-					<ComboBox 
-						id="languageBox"
-						change="changeLanguage">
-						<core:Item key="de" text="DE"/>
-						<core:Item key="default" text="Local"/>
-         		   </ComboBox>
-				</OverflowToolbar>
-			</f:footer>
 		</f:DynamicPage>
 </mvc:View>

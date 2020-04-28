@@ -9,7 +9,7 @@
 		showNavButton="true"
 		navButtonPress=".backToProducts">
 		<headerContent>
-            <Button icon="sap-icon://close" press=".language" />
+            <Button icon="sap-icon://cart" text="{i18n>shoppingCart}" press=".goTocart" />
         </headerContent>
 		<VBox class="sapUiSmallMargin">
 			<f:SimpleForm

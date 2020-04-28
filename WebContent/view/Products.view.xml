@@ -41,11 +41,15 @@
 										<m:Text text="{i18n>productPrice}" />
 									</m:Column>
 									<m:Column>
+										<m:Text text="Discontinued" />
+									</m:Column>
+									<m:Column>
 										
 									</m:Column>
 								</m:columns>
 								<m:items>
-									<m:ColumnListItem 
+									<m:ColumnListItem
+										id="cli"
 										type="Navigation"
                 						press=".getProductDetails">
 										<m:cells>
@@ -58,7 +62,14 @@
 												} EUR"/>
 										</m:cells>
 										<m:cells>
+											<m:ObjectIdentifier text="{
+												path: 'Discontinued',
+												formatter: '.formatter.isDiscontinued'
+											}"/>
+										</m:cells>
+										<m:cells>
 											<m:Button
+												id="addToCartButton"
 												text="{i18n>shoppingCart}"
 												icon="sap-icon://cart-3" 
 												press=".addToCart" />

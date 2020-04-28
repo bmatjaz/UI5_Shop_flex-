@@ -9,8 +9,8 @@ sap.ui.define([
 		formatter: formatter,
 
 		onInit: function () {
-			this.getOwnerComponent().getRouter()
-				.getRoute("productDetails").attachPatternMatched(this._onRouteMatched, this);
+			this._oRouter = this.getOwnerComponent().getRouter();
+			this._oRouter.getRoute("productDetails").attachPatternMatched(this._onRouteMatched, this);
 		},
 		_onRouteMatched: function(oEvent) {
 			var productId = oEvent.getParameter("arguments").productID;
@@ -23,9 +23,12 @@ sap.ui.define([
 			cart.addToCart(oResourceBundle, oProduct, oCartModel);
 		},
 		backToProducts: function (oEvent) {
-			var oRouter = this.getOwnerComponent().getRouter();
 			var sCategoryId = oEvent.getSource().getBindingContext().getProperty("CategoryID");
-			oRouter.navTo("products", {categoryID:sCategoryId});
+			this._oRouter.navTo("products", {categoryID:sCategoryId});
+		},
+		goTocart: function(oEvent) {
+			var sCategoryId = oEvent.getSource().getBindingContext().getProperty("CategoryID");
+			this._oRouter.navTo("cart", {categoryID: sCategoryId});
 		}
 	});
 });

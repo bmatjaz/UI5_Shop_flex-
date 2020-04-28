@@ -31,10 +31,10 @@
 					<Label text="{i18n>productName}" />
 				</Column>
 				<Column>
-					<Label text="{i18n>categoryId}" />
+					<Label text="{i18n>productPrice}" />
 				</Column>
 				<Column>
-					<Label text="{i18n>productId}" />
+					<Label text="{i18n>maxQuantity}" />
 				</Column>
 				<Column>
 					<Label text="{i18n>quantityInCart}"/>
@@ -44,20 +44,21 @@
 				</Column>
 			</columns>
 			<items>
-				<ColumnListItem>
+				<ColumnListItem 
+					type="Navigation"
+					press=".goToDetails">
 					<cells>
-						<Text 
-						text="{cartProducts>Quantity} x 
-							{
+						<Text text="{cartProducts>ProductName}" />
+						<Text text="{
 								path : 'cartProducts>UnitPrice',
 								formatter : '.formatter.price'
-							} EUR 
-							{cartProducts>ProductName}" />
-						<Text text="{cartProducts>CategoryID}" />
-						<Text text="{cartProducts>ProductID}" />
+							} EUR " />
+						<Text text="{cartProducts>UnitsInStock}" />
 						<StepInput
 							value="{cartProducts>Quantity}"
-							change=".totalPrice"/>
+							change=".totalPrice"
+							min="1"
+							max="{cartProducts>UnitsInStock}"/>
 						<Button icon="sap-icon://delete" text="{i18n>removeFromCart}" press=".delete"/>
 					</cells>
 				</ColumnListItem>

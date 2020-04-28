@@ -21,23 +21,28 @@ sap.ui.define([
 			if (oProductToBeAdded.Product !== undefined) {
 				oProductToBeAdded = oProductToBeAdded.Product;
 			}
-			// find existing entry for product
-			var oCollectionEntries = Object.assign({}, oCartModel.getData()["cartEntries"]);
-			var oCartEntry =  oCollectionEntries[oProductToBeAdded.ProductID];
+			if (oProductToBeAdded.Discontinued == false) {
+				// find existing entry for product
+				var oCollectionEntries = Object.assign({}, oCartModel.getData()["cartEntries"]);
+				var oCartEntry = oCollectionEntries[oProductToBeAdded.ProductID];
 
-			if (oCartEntry === undefined) {
-				// create new entry
-				oCartEntry = Object.assign({}, oProductToBeAdded);
-				oCartEntry.Quantity = 1;
-				oCollectionEntries[oProductToBeAdded.ProductID] = oCartEntry;
-			} else {
-				// update existing entry
-				oCartEntry.Quantity += 1;
+				if (oCartEntry === undefined) {
+					// create new entry
+					oCartEntry = Object.assign({}, oProductToBeAdded);
+					oCartEntry.Quantity = 1;
+					oCollectionEntries[oProductToBeAdded.ProductID] = oCartEntry;
+				} else {
+					// update existing entry
+					oCartEntry.Quantity += 1;
+				}
+				//update the cart model
+				oCartModel.setProperty("/cartEntries", Object.assign({}, oCollectionEntries));
+				oCartModel.refresh(true);
+				MessageToast.show(oBundle.getText("productMsgAddedToCart", [oProductToBeAdded.ProductName]));
 			}
-			//update the cart model
-			oCartModel.setProperty("/cartEntries", Object.assign({}, oCollectionEntries));
-			oCartModel.refresh(true);
-			MessageToast.show(oBundle.getText("productMsgAddedToCart", [oProductToBeAdded.ProductName] ));
+			else {
+				MessageToast.show("Product not available");
+			}
 		}
 	};
 });

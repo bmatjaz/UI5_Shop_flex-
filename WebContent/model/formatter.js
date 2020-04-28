@@ -18,6 +18,13 @@ sap.ui.define([
 				decimalSeparator: ","
 			});
 			return numberFormat.format(sValue);
+		},
+
+		isDiscontinued: function(sValue) {
+			if(sValue)
+				return "Discontinued";
+			else
+				return "Avaliable"
 		}
 	};
 	return formatter;
