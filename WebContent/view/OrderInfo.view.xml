@@ -1,0 +1,54 @@
+<mvc:View
+	controllerName="sap.ui.flex.shop.controller.OrderInfo"
+    xmlns:mvc="sap.ui.core.mvc"
+		xmlns="sap.m"
+		xmlns:f="sap.f"
+		xmlns:layout="sap.ui.layout"
+		height="100%">
+		<f:DynamicPage id="dynamicPageId"
+			stickySubheaderProvider="iconTabBar"
+			class="sapUiNoContentPadding">
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title text="Order {OrderID}"/>
+					</f:heading>
+				</f:DynamicPageTitle>
+			</f:title>
+			<f:header>
+				<f:DynamicPageHeader pinnable="true">
+					<layout:HorizontalLayout allowWrapping="true">
+						<layout:VerticalLayout class="sapUiMediumMarginEnd">
+							<ObjectAttribute title="Customer ID" text="{CustomerID}"/>
+							<ObjectAttribute title="Employee ID" text="{EnployeeID}"/>
+							<ObjectAttribute title="Ship name" text="{ShipName}"/>
+						</layout:VerticalLayout>
+
+						<layout:VerticalLayout>
+							<ObjectAttribute title="Shipped date"/>
+							<ObjectStatus text="{ShippedDate}" state="Success" />
+							<!-- Add formatter for color sent/not sent -->
+						</layout:VerticalLayout>
+					</layout:HorizontalLayout>
+				</f:DynamicPageHeader>
+			</f:header>
+			<f:content>
+				<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
+					<items>
+						<IconTabFilter text="Info">
+							<mvc:XMLView viewName="sap.ui.flex.shop.view.ShipperInfo"/>
+						</IconTabFilter>
+						<IconTabFilter text="Customer info">
+							<mvc:XMLView viewName="sap.ui.flex.shop.view.CustomerInfo"/>
+						</IconTabFilter>
+						<IconTabFilter text="Responsible employee">
+							<mvc:XMLView viewName="sap.ui.flex.shop.view.ResponsibleEmployee"/>
+						</IconTabFilter>
+						<IconTabFilter text="Ordered items">
+							<mvc:XMLView viewName="sap.ui.flex.shop.view.OrderDetail"/>
+						</IconTabFilter>
+					</items>
+				</IconTabBar>
+			</f:content>
+		</f:DynamicPage>
+</mvc:View>

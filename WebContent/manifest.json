@@ -62,6 +62,31 @@
 			"routes": [
 				{
 					"pattern": "",
+					"name": "home",
+					"target": [
+						"home"
+					],
+					"layout": "OneColumn"
+				},
+				{
+					"pattern": "orders",
+					"name": "orders",
+					"layout": "OneColumn",
+					"target": [
+						"orders"
+					]
+				},
+				{
+					"pattern": "orders/details/:orderID:",
+					"name": "orderDetails",
+					"layout": "TwoColumnsMidExpanded",
+					"target": [
+						"orders",
+						"orderDetails"
+					]
+				},
+				{
+					"pattern": "shop",
 					"name": "master",
 					"target": [
 						"master",
@@ -141,6 +166,18 @@
 				"productDetails": {
 					"viewName": "ProductDetails",
 					"controlAggregation": "endColumnPages"
+				},
+				"home": {
+					"viewName": "Home",
+					"controlAggregation": "beginColumnPages"
+				},
+				"orders": {
+					"viewName": "Orders",
+					"controlAggregation": "beginColumnPages"
+				},
+				"orderDetails": {
+					"viewName": "OrderInfo",
+					"controlAggregation": "midColumnPages"
 				}
 			}
 		}

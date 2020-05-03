@@ -1,0 +1,28 @@
+<mvc:View
+    controllerName="sap.ui.flex.shop.controller.CustomerInfo"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+    <VBox>
+        <Label text="Customer ID" />
+        <Text text="{CustomerID}" />
+        <Label text="Comapny name" />
+        <Text text="{CompanyName}" />
+        <Label text="Contact name" />
+        <Text text="{ContactName}" />
+        <Label text="Contact title" />
+        <Text text="{ContactTitle}" />
+        <Label text="Address" />
+        <Text text="{Address}" />
+        <Label text="City" />
+        <Text text="{City}" />
+        <Label text="Postal code" />
+        <Text text="{PostalCode}" />
+        <Label text="Country" />
+        <Text text="{Country}" />
+        <Label text="Phone" />
+        <Text text="{Phone}" />
+        <Label text="Fax" />
+        <Text text="{Fax}" />
+    </VBox>
+</mvc:View>
+           

@@ -1,0 +1,20 @@
+<mvc:View
+    controllerName="sap.ui.flex.shop.controller.ResponsibleEmployee"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+    <VBox>
+        <Label text="Employee ID" />
+        <Text text="{EmployeeID}" />
+        <Label text="Last name" />
+        <Text text="{LastName}" />
+        <Label text="First name" />
+        <Text text="{FirstName}" />
+        <Label text="Title" />
+        <Text text="{Title}" />
+        <Label text="Phone" />
+        <Text text="{HomePhone}" />
+        <Label text="Extension" />
+        <Text text="{Extension}" />
+    </VBox>
+</mvc:View>
+           
