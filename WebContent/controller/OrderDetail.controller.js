@@ -6,10 +6,9 @@ sap.ui.define([
 	return Controller.extend("sap.ui.flex.shop.controller.OrderDetail", {
 		onInit: function () {
 			var oOwnerComponent = this.getOwnerComponent();
-			this._oRouter = oOwnerComponent.getRouter();
-			this._oRouter.getRoute("orderDetails").attachPatternMatched(this._onProductMatched, this);
+			this.oRouter = oOwnerComponent.getRouter();
+			this.oRouter.getRoute("orderDetails").attachPatternMatched(this._onProductMatched, this);
 		},
-		//when view is opened get all products based on category
 		_onProductMatched: function (oEvent) {
             this.orderID = oEvent.getParameter("arguments").orderID;
             var _oTable = this.getView().byId("orderedItems");
@@ -20,8 +19,11 @@ sap.ui.define([
 			};
 			_oTable.bindAggregation("items", oBindingInfo);
 		},
-		goToDetails: function() {
-			
-		}
+		goToDetails: function(oEvent) {
+			this.orderID = oEvent.getSource().getBindingContext().getProperty("OrderID");
+			this.sProductId = oEvent.getSource().getBindingContext().getProperty("ProductID");
+			this.oRouter.navTo("orderProductDetail",
+				{orderID:this.orderID, productID: this.sProductId });		
+		} 
 	});
 });

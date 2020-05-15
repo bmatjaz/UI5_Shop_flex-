@@ -6,9 +6,6 @@ sap.ui.define([
 ], function (Controller, MessageBox, formatter, JSONModel) {
 	"use strict";
 
-	var sCartModelName = "cartProducts";
-	var sCartEntries = "cartEntries";
-	
 	return Controller.extend("sap.ui.flex.shop.controller.Checkout", {
 		formatter: formatter,
 		

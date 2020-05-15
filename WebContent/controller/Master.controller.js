@@ -25,6 +25,9 @@ sap.ui.define([
             else {
                 sap.ui.getCore().getConfiguration().setLanguage(sSelectedKey);
             }
-        }
+		},
+		onBackToEntry: function() {
+			this.oRouter.navTo("home");
+		}
 	});
 });

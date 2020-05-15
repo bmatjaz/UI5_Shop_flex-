@@ -136,6 +136,14 @@
 						"master", "products", "productDetails"
 					],
 					"layout": "ThreeColumnsEndExpanded"
+				},
+				{
+					"pattern": "orders/details/{orderID}/product/{productID}",
+					"name": "orderProductDetail",
+					"target": [
+						"orderProductDetail", "orders", "orderDetails"
+					],
+					"layout": "ThreeColumnsMidExpanded"
 				}
 			],
 			"targets": {
@@ -165,6 +173,10 @@
 				},
 				"productDetails": {
 					"viewName": "ProductDetails",
+					"controlAggregation": "endColumnPages"
+				},
+				"orderProductDetail": {
+					"viewName": "OrderProductDetail",
 					"controlAggregation": "endColumnPages"
 				},
 				"home": {

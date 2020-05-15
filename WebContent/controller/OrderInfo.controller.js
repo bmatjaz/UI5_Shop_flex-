@@ -1,6 +1,7 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function (Controller) {
+	"sap/ui/core/mvc/Controller",
+	"../model/fileCreator"
+], function (Controller, fileCreator) {
 	"use strict";
 
 	return Controller.extend("sap.ui.flex.shop.controller.OrderInfo", {
@@ -12,6 +13,10 @@ sap.ui.define([
 		_onProductMatched: function (oEvent) {
 			var orderID = oEvent.getParameter("arguments").orderID;
 			this.getView().bindElement("/Orders(" + orderID + ")");
+		},
+		exportCSV: function(oEvent) {
+			var object = oEvent.getSource().getBindingContext().getObject();
+			fileCreator.invoiceObjToCSV(object, "Invoice");
 		}
 	});
 });

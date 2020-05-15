@@ -20,5 +20,12 @@
                 title="{OrderID}"
                 description="{CustomerID}"/>
         </List>
+        <footer>
+			<Toolbar>
+				<Button
+					text="Entry page"
+					press=".onBackToEntry"/>
+			</Toolbar>
+		</footer>
 	</Page>
 </mvc:View>
